@@ -1,0 +1,61 @@
+---
+- name: 2.2.1 User Rights Assignment - Ensure 'Access Credential Manager as a trusted caller' is set to 'No One'
+  ansible.windows.win_user_right:
+    name: SeTrustedCredManAccessPrivilege
+    users: "{{ cis_Local_Policies_SeTrustedCredManAccessPrivilege }}"
+    action: set
+  tags:
+    - Level1
+    - Level2
+
+# 2.2.2 not set for standalone hosts
+
+- name: 2.2.3 User Rights Assignment - Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users'
+  ansible.windows.win_user_right:
+    name: SeNetworkLogonRight
+    users: "{{ cis_Local_Policies_SeNetworkLogonRight }}"
+    action: set
+  tags:
+    - Level1
+    - Level2
+
+- name: 2.2.4 User Rights Assignment - Ensure 'Act as part of the operating system' is set to 'No One'
+  ansible.windows.win_user_right:
+    name: SeTcbPrivilege
+    users: "{{ cis_Local_Policies_SeTcbPrivilege }}"
+    action: set
+  tags:
+    - Level1
+    - Level2
+
+# 2.2.5 not set for standalone hosts
+
+- name: 2.2.6 User Rights Assignment - Ensure 'Adjust memory quotas for a process' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
+  ansible.windows.win_user_right:
+    name: SeIncreaseQuotaPrivilege
+    users: "{{ cis_Local_Policies_SeIncreaseQuotaPrivilege }}"
+    action: set
+  tags:
+    - Level1
+    - Level2
+
+- name: 2.2.7 User Rights Assignment - Ensure 'Allow log on locally' is set to 'Administrators'
+  ansible.windows.win_user_right:
+    name: SeInteractiveLogonRight
+    users: "{{ cis_Local_Policies_SeInteractiveLogonRight }}"
+    action: set
+  tags:
+    - Level1
+    - Level2
+
+# 2.2.8 not set for standalone hosts
+
+- name: 2.2.9 User Rights Assignment - Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators, Remote Desktop Users'
+  ansible.windows.win_user_right:
+    name: SeRemoteInteractiveLogonRight
+    users: "{{ cis_Local_Policies_SeRemoteInteractiveLogonRight }}"
+    action: set
+  tags:
+    - Level1
+    - Level2
+...

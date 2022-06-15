@@ -1,0 +1,20 @@
+---
+# 01 Account Policy
+cis_Account_Policy_PasswordHistorySize: 24
+cis_Account_Policy_MaximumPasswordAge: 60
+cis_Account_Policy_MinimumPasswordAge: 1
+cis_Account_Policy_MinimumPasswordLength: 14
+cis_Account_Policy_PasswordComplexity: 1
+cis_Account_Policy_ClearTextPassword: 0
+cis_Account_Policy_LockoutDuration: 15
+cis_Account_Policy_LockoutBadCount: 10
+cis_Account_Policy_ResetLockoutCount: 15
+
+# 02 Local Policies
+cis_Local_Policies_SeTrustedCredManAccessPrivilege: []
+cis_Local_Policies_SeNetworkLogonRight: ['S-1-5-32-544', 'S-1-5-11']
+cis_Local_Policies_SeTcbPrivilege: []
+cis_Local_Policies_SeIncreaseQuotaPrivilege: ['S-1-5-32-544','S-1-5-19','S-1-5-20']
+cis_Local_Policies_SeInteractiveLogonRight: ['S-1-5-32-544']
+cis_Local_Policies_SeRemoteInteractiveLogonRight: ['S-1-5-32-544','S-1-5-32-555']
+...

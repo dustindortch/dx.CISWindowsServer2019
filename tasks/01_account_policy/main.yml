@@ -1,0 +1,84 @@
+---
+- name: 1.1.1 Password Policy - Ensure 'Enforce password history' is set to '24 or more passwords(s)'
+  community.windows.win_security_policy:
+    section: System Access
+    key: PasswordHistorySize
+    value: "{{ cis_Account_Policy_PasswordHistorySize }}"
+  tags:
+    - Level1
+    - Level2
+
+- name: 1.1.2 Password Policy - Ensure 'Maximum password age' is set to '60 or fewer days, but not 0'
+  community.windows.win_security_policy:
+    section: System Access
+    key: MaximumPasswordAge
+    value: "{{ cis_Account_Policy_MaximumPasswordAge }}"
+  tags:
+    - Level1
+    - Level2
+    # Add validation to not allow 0
+
+- name: 1.1.3 Password Policy - Ensure 'Minimum password age' is set to '1 or more day(s)'
+  community.windows.win_security_policy:
+    section: System Access
+    key: MinimumPasswordAge
+    value: "{{ cis_Account_Policy_MinimumPasswordAge }}"
+  tags:
+    - Level1
+    - Level2
+
+- name: 1.1.4 Password Policy - Ensure 'Minimum password length' is set to '14 or more character(s)'
+  community.windows.win_security_policy:
+    section: System Access
+    key: MinimumPasswordLength
+    value: "{{ cis_Account_Policy_MinimumPasswordLength }}"
+  tags:
+    - Level1
+    - Level2
+
+- name: 1.1.5 Password Policy - Ensure 'Password must meet complexity requirements' is set to 'Enabled'
+  community.windows.win_security_policy:
+    section: System Access
+    key: PasswordComplexity
+    value: "{{ cis_Account_Policy_PasswordComplexity }}"
+  tags:
+    - Level1
+    - Level2
+
+- name: 1.1.6 Password Policy - Ensure 'Store passwords using reversible encryption' is set to 'Disabled'
+  community.windows.win_security_policy:
+    section: System Access
+    key: ClearTextPassword
+    value: "{{ cis_Account_Policy_ClearTextPassword }}"
+  tags:
+    - Level1
+    - Level2
+
+# 1.2.3 has to be set before 1.2.1 based on logic in secedit.exe
+- name: 1.2.3 Account Lockout Policy - Ensure 'Reset account lockout counter after' is set to '15 or more days(s)'
+  community.windows.win_security_policy:
+    section: System Access
+    key: ResetLockoutCount
+    value: "{{ cis_Account_Policy_ResetLockoutCount }}"
+  tags:
+    - Level1
+    - Level2
+
+- name: 1.2.1 Account Lockout Policy - Ensure 'Account lockout duration' is set to '15 or more minute(s)'
+  community.windows.win_security_policy:
+    section: System Access
+    key: LockoutDuration
+    value: "{{ cis_Account_Policy_LockoutDuration }}"
+  tags:
+    - Level1
+    - Level2
+
+- name: 1.2.2 Account Lockout Policy - Ensure 'Account lockout threshold' is set to '10 or fewer invalid logon attempt(s)'
+  community.windows.win_security_policy:
+    section: System Access
+    key: LockoutBadCount
+    value: "{{ cis_Account_Policy_LockoutBadCount }}"
+  tags:
+    - Level1
+    - Level2
+...
